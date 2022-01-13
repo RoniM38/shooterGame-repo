@@ -1,0 +1,8 @@
+In this game, as you can already tell by its name,
+the main objective is to defeat zombies. You will be
+playing in first person mode and will only be able to
+see your hands. You will receive a gun which will be
+used to shoot the zombies. The zombies will be
+randomly generated, and they will spawn faster
+as the game progresses. You will have three
+lives and a health bar. Good luck!!
