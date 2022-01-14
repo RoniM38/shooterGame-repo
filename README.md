@@ -16,9 +16,8 @@ pistol will be shot to that position. If the bullet hits a zombie, the zombie wi
 If the bullet doesn't hit anything, it will just disappear when it gets to the position of the mouse click. If you don't shoot a zombie and it gets to the ground,
 the zombie will disappear and you will lose 5 health points. When your health reaches 0, you will lose one of your lives. If you are left with 0 lives, you will
 be directed to a "Game Over" screen (read the game over description for details). The game will get harder as it progresses by decreasing the wait time between
-spawning each zombie, increasing the speed of the zombies and increasing the amount of zombies that can appear on the screen simultaneously. The hardest part of the
-game is "Extreme Mode". Extreme Mode is enabled before the game becomes impossible, meaning it is very challenging. When you reach Extreme Mode, a "Extreme Mode"
-label will be displayed at the top of the window. When quitting the game, your high score will be saved and you will be able to see it when playing again.
+spawning each zombie, increasing the zombies' damage, increasing the speed of the zombies and increasing the amount of zombies that can appear on the screen simultaneously. 
+The hardest part of the game is "Extreme Mode". Extreme Mode is enabled before the game becomes impossible, meaning it is very challenging. When you reach Extreme Mode, a "Extreme Mode" label will be displayed at the top of the window. When quitting the game, your high score will be saved and you will be able to see it when playing again.
 
 Game Over Description:
 When losing all of your lives, you will be directed to the "Game Over" screen. This page will inform you that you have lost the game and will play some annoying music.
@@ -29,4 +28,4 @@ Keyboard Shortcuts:
 q- quit the game and go back to the main menu.
 p- pause the game (you can continue the game by pressing p again or by clicking the "continue" button that will be displayed on the screen).
 
-Thanks for reading ;)
+Hope this isn't too long, thanks for reading ;)
