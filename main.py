@@ -54,7 +54,7 @@ class Player:
         if self.score > self.highScore:
             self.highScore = self.score
 
-        if self.health == 0:
+        if self.health <= 0:
             self.lives -= 1
             self.health = 100
 
@@ -91,10 +91,11 @@ player = Player()
 
 
 class Zombie:
-    def __init__(self, x, y, speed):
+    def __init__(self, x, y, speed, damage):
         self.x = x
         self.y = y
         self.speed = speed
+        self.damage = damage
         self.isAlive = True
 
         # Zombie Sprites
@@ -110,7 +111,7 @@ class Zombie:
         if self.y < 220:
             self.y += self.speed
         else:
-            player.health -= 5
+            player.health -= self.damage
             zombies.remove(self)
 
     def dead(self):
@@ -241,6 +242,8 @@ def main():
     zombieLimit = 10
     # Stores the player's scores
     scoresList = []
+    # Zombie damage
+    damage = 5
     # main game loop
     while True:
         time += 10
@@ -292,7 +295,7 @@ def main():
             while 150 <= zombieX <= 500:
                 zombieX = random.randint(50, 900)
 
-            z = Zombie(zombieX, -50, speed)
+            z = Zombie(zombieX, -50, speed, damage)
             zombies.append(z)
 
         for zombie in zombies:
@@ -310,7 +313,7 @@ def main():
 
         scoresList.append(player.score)
 
-        if speed >= 10 and zombieLimit >= 15 and spawnWait <= 150:
+        if speed >= 10 and zombieLimit >= 15 and spawnWait <= 150 and damage >= 30:
             font2 = pygame.font.SysFont("Berlin Sans FB Demi", 60, "bold")
             window.blit(font2.render("EXTREME", True, (136, 0, 21)), (400, 10))
             window.blit(font2.render("MODE", True, (136, 0, 21)), (440, 60))
@@ -320,6 +323,8 @@ def main():
                     speed += 0.5
                     zombieLimit += 1
                     spawnWait -= 20
+                    if damage < 30:
+                        damage += 5
 
         pygame.display.update()
 
