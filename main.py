@@ -379,8 +379,7 @@ def rules():
 
         with open("rules.txt", "r") as f:
             for line in f.readlines():
-                line = line[:-1]
-                window.blit(font.render(line, True, (0, 0, 0)), (40, y))
+                window.blit(font.render(line[:-1], True, (0, 0, 0)), (40, y))
                 y += 35
 
         for event in pygame.event.get():
