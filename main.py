@@ -13,7 +13,7 @@ bg = pygame.transform.scale(bg, WINDOW_SIZE)
 
 # Game Logo
 gameLogo = pygame.image.load("MenuPage/defeatTheZombiesLogo.png")
-gameLogo = pygame.transform.scale(gameLogo, (219.2, 262.8))
+gameLogo = pygame.transform.scale(gameLogo, (219, 263))
 
 # Menu Background
 menuBg = pygame.image.load("MenuPage/graveYardPic (not made by me).png")
@@ -25,7 +25,7 @@ rulesBg = pygame.transform.scale(rulesBg, WINDOW_SIZE)
 
 # Game Controls
 gameControls = pygame.image.load("RulesPage/shooterGameControls.png")
-gameControls = pygame.transform.scale(gameControls, (274, 328.5))
+gameControls = pygame.transform.scale(gameControls, (274, 328))
 
 # Hand Sprites
 rightFacingHands = pygame.image.load("Hands/rightFacingHands.png")
@@ -56,7 +56,7 @@ class Player:
 
         if self.health <= 0:
             self.lives -= 1
-            self.health = 100
+            self.health = 100 - abs(self.health)
 
         if self.lives == 0:
             gameOver()
@@ -148,7 +148,10 @@ class Bullet:
 
         distance = math.sqrt((self.dest[1] - self.y)**2 + (self.dest[0] - self.x)**2)
         if distance < self.speed:
-            self.bullets.remove(self)
+            try:
+                self.bullets.remove(self)
+            except ValueError:
+                pass
 
     def hasCollided(self):
         for zombie in self.zombies:
@@ -401,6 +404,7 @@ def gameOver():
     stopSound = pygame.mixer.Sound("Music/STOP.wav")
     gameOverSound = pygame.mixer.Sound("Music/GameOver.wav")
     gameOverSound.play(-1)
+    hasBeenStopped = False
     while True:
         window.fill((0, 0, 0))
 
@@ -412,8 +416,9 @@ def gameOver():
         pygame.draw.rect(window, "#8800ff", (600, 350, 200, 80))
         window.blit(font.render("Menu", True, (0, 0, 0)), (620, 350))
 
-        pygame.draw.rect(window, (255, 0, 0), (5, 5, 200, 80))
-        window.blit(font.render("STOP", True, (255, 255, 255)), (20, 10))
+        if not hasBeenStopped:
+            pygame.draw.rect(window, (255, 0, 0), (5, 5, 200, 80))
+            window.blit(font.render("STOP", True, (255, 255, 255)), (20, 10))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -421,9 +426,11 @@ def gameOver():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouseX, mouseY = pygame.mouse.get_pos()
-                if 5 <= mouseX <= 205 and 5 <= mouseY <= 85:
-                    gameOverSound.stop()
-                    stopSound.play()
+                if not hasBeenStopped:
+                    if 5 <= mouseX <= 205 and 5 <= mouseY <= 85:
+                        gameOverSound.stop()
+                        stopSound.play()
+                        hasBeenStopped = True
 
                 if 600 <= mouseX <= 800 and 350 <= mouseY <= 430:
                     gameOverSound.stop()
