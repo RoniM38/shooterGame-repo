@@ -179,7 +179,7 @@ def showHands():
         window.blit(rightFacingPistol, (400, 220))
 
 
-def pauseGame():
+def pauseGame(clock):
     font1 = pygame.font.SysFont("Arial", 60, "bold")
     font2 = pygame.font.SysFont("Arial", 35, "bold")
     while True:
@@ -193,6 +193,10 @@ def pauseGame():
 
         pygame.draw.rect(window, "#dd5aff", (575, 260, 220, 80))
         window.blit(font2.render("QUIT", True, (0, 0, 0)), (635, 280))
+
+        clock.tick(30)
+        font = pygame.font.SysFont("Arial", 30, "bold")
+        window.blit(font.render(f"FPS:{int(clock.get_fps())}", True, (0, 0, 0)), (5, 515))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -278,7 +282,7 @@ def main():
                     menu()
 
                 if keys[pygame.K_p]:
-                    pauseGame()
+                    pauseGame(clock)
 
         clock.tick(30)
         fillWindow()
@@ -327,7 +331,6 @@ def main():
                         damage += 5
 
         pygame.display.update()
-
 
 
 def menu():
