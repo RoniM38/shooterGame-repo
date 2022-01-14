@@ -241,7 +241,7 @@ def main():
     # counts iterations
     count = 0
     # zombie speed
-    speed = 1.5
+    speed = 2
     # Amount of zombies that can be displayed on screen at the same time
     zombieLimit = 10
     # Stores the player's scores
@@ -271,7 +271,7 @@ def main():
                     side = "right"
                     x = 705
 
-                b = Bullet(x, 380, (mouseX, mouseY), 20, side, zombies, bullets)
+                b = Bullet(x, 380, (mouseX, mouseY), 50, side, zombies, bullets)
                 bullets.append(b)
 
             if event.type == pygame.KEYDOWN:
