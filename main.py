@@ -371,6 +371,7 @@ def rules():
     window.fill((255, 255, 255))
     font = pygame.font.SysFont("comicsans", 30)
     font2 = pygame.font.SysFont("Arial MT Rounded Bold", 100, "bold")
+    font3 = pygame.font.SysFont("Arial", 40, "bold")
     while True:
         y = 150
 
@@ -378,7 +379,7 @@ def rules():
         window.blit(gameControls, (800, 120))
         window.blit(font2.render("Rules", True, (0, 0, 0)), (430, 50))
         pygame.draw.rect(window, (0, 0, 255), (10, 10, 50, 50))
-        window.blit(font.render("X", True, (255, 255, 255)), (24, 12))
+        window.blit(font3.render("X", True, (255, 255, 255)), (22, 12))
 
         with open("rules.txt", "r") as f:
             for line in f.readlines():
