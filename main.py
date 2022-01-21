@@ -408,11 +408,12 @@ def gameOver():
     hasBeenStopped = False
     font = pygame.font.SysFont("cooperblack", 60)
     font2 = pygame.font.SysFont("Arial", 30, "bold")
+
+    gameOver = pygame.image.load("GameOver.png")
+    gameOver = pygame.transform.scale(gameOver, WINDOW_SIZE)
     while True:
         window.fill((0, 0, 0))
 
-        gameOver = pygame.image.load("GameOver.png")
-        gameOver = pygame.transform.scale(gameOver, WINDOW_SIZE)
         window.blit(gameOver, (0, 0))
 
         pygame.draw.rect(window, "#8800ff", (600, 350, 200, 80))
