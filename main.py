@@ -1,6 +1,7 @@
 import pygame
 import random
 import math
+import sys
 pygame.init()
 
 WINDOW_SIZE = (1100, 550)
@@ -204,7 +205,8 @@ def pauseGame(clock):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 saveHighScore()
-                quit()
+                pygame.quit()
+                sys.exit(0)
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouseX, mouseY = pygame.mouse.get_pos()
@@ -259,7 +261,8 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 saveHighScore()
-                quit()
+                pygame.quit()
+                sys.exit(0)
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 gunShot = pygame.mixer.Sound("Music/GunShot.wav")
@@ -353,7 +356,8 @@ def menu():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                quit()
+                pygame.quit()
+                sys.exit(0)
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouseX, mouseY = pygame.mouse.get_pos()
@@ -388,7 +392,8 @@ def rules():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                quit()
+                pygame.quit()
+                sys.exit(0)
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouseX, mouseY = pygame.mouse.get_pos()
@@ -427,7 +432,8 @@ def gameOver():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                quit()
+                pygame.quit()
+                sys.exit(0)
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouseX, mouseY = pygame.mouse.get_pos()
