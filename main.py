@@ -290,6 +290,9 @@ def main():
                 if keys[pygame.K_p]:
                     pauseGame(clock)
 
+            if pygame.key.get_focused() == 0:
+                pauseGame(clock)
+
         clock.tick(30)
         fillWindow()
         showHands()
