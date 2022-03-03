@@ -190,6 +190,7 @@ def pauseGame(clock):
         fillWindow()
 
         pygame.draw.rect(window, "#9400ff", (300, 120, 520, 300))
+        pygame.draw.rect(window, (255, 255, 255), (300, 120, 520, 300), 3)
         window.blit(font1.render("PAUSED", True, (0, 0, 0)), (430, 130))
 
         pygame.draw.rect(window, "#dd5aff", (325, 260, 220, 80))
